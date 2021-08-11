@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tasks</title>
+</head>
+<body>
+    <div class="top">
+        <h1> Enter a task: </h1>
+        <form action="crud/add" method="POST">
+            <label for="title" class="input">Title: </label>
+            <input type="text" placeholder="Title" id="title" name="title">
+
+            <label for="desc" class="input">Description: </label>
+            <textarea id="desc" cols="30" rows="10" placeholder="Describe your task" name="desc"></textarea>
+
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <% if (data.length > 0) { %>
+        <br>
+        <hr>
+        <h1 class="heading"> My tasks </h1>
+        <div class="task">
+            <% data.forEach(element => { %>
+                <div class="taskMember">
+                    <h1> <%= element.title %></task> </h1>
+                    <p class="desc"> <%= element.desc.substr(0 , 10) %> <a href="">...read more</a></p>
+                    <form action="/crud/markRead" method="post" class="buttonForm">
+                        <input type="hidden" name="id" value="<%= element.id %>">
+                        <% if ( !element.status) { %>
+                            <button class="btn blue" type="submit"> Mark read </button>
+                        <% }else{ %>
+                            <button class="btn blue" type="submit" disabled> Done reading </button>
+                        <% } %>
+    
+                        <button formaction="/crud/delete" class="btn red" type="submit"> Delete </button>
+                        <button formaction="/crud/update" class="btn green" type="submit"> Update </button>
+                    </form>
+                </div>
+            <% }) %>
+            
+        </div>
+    <% } %>
+</body>
+</html>
