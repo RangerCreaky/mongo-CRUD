@@ -22,12 +22,26 @@ app.get('/' , (req , res)=>{
             console.log(err);
         }
         if(data){
+            // console.log(data);
             res.render('index' , {data : data});  
         }
-    })
-    
-})
+    }); 
+});
 
+app.get("/tasks/:id" , (req , res)=>{
+    // Here show the task as a whole
+    const id = req.params.id;
+    Task.find({'_id' : id} , (err , data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            res.render('task' , {data : data});
+        }
+    })
+
+    
+});
 
 // Listen
 app.listen(3000 , ()=>{

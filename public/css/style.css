@@ -44,13 +44,13 @@ input[type=submit]{
 .heading{
     text-align: center;
 }
+
 .task{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
 }
 .taskMember{
-    width: 18rem;
-    margin: 5px;
     background-color: #e7ae7b ;
     padding: 2rem 2.4rem;
     text-align: center;
@@ -96,4 +96,32 @@ input[type=submit]{
     font-size: 1.1rem;
     color: white;
     background-color: rgb(114, 114, 240);
+}
+
+/*Individual task*/
+.indiTask{
+    background-color: blue;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+    .task{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    .task{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .task{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
 }
